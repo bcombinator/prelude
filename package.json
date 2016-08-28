@@ -1,0 +1,19 @@
+{
+  "name": "@bcombinator/prelude",
+  "version": "1.0.0",
+  "description": "A standard module imported by default into all Bcombinator modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tape --require buba/register test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcombinator/prelude.git"
+  },
+  "author": "David Chase <davidchase03@gmail.com> (github.com/davidchase)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bcombinator/prelude/issues"
+  },
+  "homepage": "https://github.com/bcombinator/prelude#readme"
+}
