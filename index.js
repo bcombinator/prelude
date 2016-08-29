@@ -1,37 +1,41 @@
+
+
+export const curry = (fn, ...args) => args.length === fn.length ? fn(...args) : curry.bind(null, fn, ...args)
+
 // decode :: String -> String
-const decode = decodeURIComponent
+export const decode = decodeURIComponent
 
 // _compose :: (b -> c) -> (a -> b) -> (a -> c)
-const _compose = (f, g) => (...args) => f(g(...args))
+export const _compose = (f, g) => (...args) => f(g(...args))
 
 // compose :: (a -> c) -> [(a -> a)] -> (a -> c)
-const compose = (...fns) => fns.reduce(_compose)
+export const compose = (...fns) => fns.reduce(_compose)
 
 // replace :: Regex -> String -> String -> String
-const replace = (pattern, substr) => str => str.replace(pattern, substr)
+export const replace = (pattern, substr) => str => str.replace(pattern, substr)
 
 // toLower :: String -> String
-const toLower = str => str.toLowerCase()
+export const toLower = str => str.toLowerCase()
 
 // append :: String -> String -> String
-const append = a => b => b.concat(a)
+export const append = a => b => b.concat(a)
 
-const uniq = xs => xs.reduce((list, x) => list.indexOf(x) === -1 ? list.concat(x) : list, [])
+export const contains = curry((x, xs) => xs.indexof(x) >= 0)
 
-const concat = (xs, list) => xs.concat(list)
+export const uniq = xs => xs.reduce((list, x) => !contains(x, list) ? list.concat(x) : list, [])
 
-const union = compose(uniq, concat)
+export const concat = curry((xs, list) => xs.concat(list))
 
-const join = separator => xs => xs.join(separator)
+export const union = compose(uniq, concat)
 
-const split = separator => str => str.split(separator)
+export const join = separator => xs => xs.join(separator)
 
-const chain = fn => xs => [].concat.apply([], xs.map(fn))
+export const split = separator => str => str.split(separator)
 
-const of = Array.of.bind(Array)
+export const chain = curry((fn, xs) => [].concat(...xs.map(fn)))
 
-const filter = pred => xs => xs.filter(pred)
+export const of = Array.of.bind(Array)
 
-const prepend = a => b => a.concat(b)
+export const filter = pred => xs => xs.filter(pred)
 
-export { decode, compose, replace, toLower, append, uniq, concat, union, join, split, chain, of, filter, prepend }
+export const prepend = a => b => a.concat(b)
