@@ -49,3 +49,6 @@ export const filter = pred => xs => xs.filter(pred)
 
 // prepend :: String -> String -> String
 export const prepend = a => b => a.concat(b)
+
+// id :: a -> a
+export const id = x => x
