@@ -3,5 +3,5 @@
 
 
 ### todo
-- [ ] tests
+- [x] tests
 - [x] function signatures
