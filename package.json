@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/bcombinator/prelude#readme",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/prelude.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bcombinator/prelude.git"
