@@ -21,6 +21,6 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "standard && tape --require buba/register test.js | tap-spec"
+    "test": "standard index.js test.js && tape --require buba/register test.js | tap-spec"
   }
 }
