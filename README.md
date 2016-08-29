@@ -4,4 +4,4 @@
 
 ### todo
 - [ ] tests
-- [ ] function signatures
+- [x] function signatures
