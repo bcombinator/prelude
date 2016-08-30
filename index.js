@@ -1,5 +1,5 @@
 // curry :: ((a, b, c, ...) -> z) -> a -> b -> c -> ... -> z
-export const curry = (fn, ...args) => args.length === fn.length ? fn(...args) : curry.bind(null, fn, ...args)
+export const curry = (fn, ...args) => args.length >= fn.length ? fn(...args) : curry.bind(null, fn, ...args)
 
 // decode :: String -> String
 export const decode = decodeURIComponent
@@ -37,8 +37,11 @@ export const join = curry((separator, xs) => xs.join(separator))
 // split :: String | RegExp → String → [String]
 export const split = curry((separator, str) => str.split(separator))
 
-// chain :: (a -> [b]) -> [a] -> [b]
-export const chain = curry((fn, xs) => [].concat.apply([], xs.map(fn)))
+// map :: (a -> [b]) -> [a] -> [b]
+export const map = curry((fn, xs) => xs.map(fn))
+
+// chain :: (a -> b) -> [a] -> [b]
+export const chain = curry((fn, xs) => [].concat.apply([], map(fn, xs)))
 
 // of :: a -> [b]
 export const of = Array.of.bind(Array)

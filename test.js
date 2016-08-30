@@ -12,6 +12,7 @@ test('curry', function (t) {
   t.deepEqual(g(1, 2)(3), xs)
   t.deepEqual(g(1)(2, 3), xs)
   t.deepEqual(g(1, 2, 3), xs)
+  t.deepEqual(P.chain(P.split('/'))(['hello/there']), ['hello', 'there'], 'nested curry functions work')
   t.end()
 })
 
@@ -75,6 +76,11 @@ test('join', function (t) {
 test('split', function (t) {
   t.deepEqual(P.split(/\-/, 'hello-there'), ['hello', 'there'], 'split with regex pattern')
   t.deepEqual(P.split('-', 'hello-there'), ['hello', 'there'], 'split with string pattern')
+  t.end()
+})
+
+test('map', function (t) {
+  t.deepEqual(P.map(x => x + 1, [1, 2, 3]), [2, 3, 4], 'maps over each item in list and increments by 1')
   t.end()
 })
 
