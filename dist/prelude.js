@@ -59,7 +59,7 @@
 	var split = curry(function (separator, str) { return str.split(separator); })
 
 	// chain :: (a -> [b]) -> [a] -> [b]
-	var chain = function (fn, xs) { return [].concat.apply([], xs.map(fn)); }
+	var chain = curry(function (fn, xs) { return [].concat.apply([], xs.map(fn)); })
 
 	// of :: a -> [b]
 	var of = Array.of.bind(Array)
