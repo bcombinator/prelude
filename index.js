@@ -38,7 +38,7 @@ export const join = curry((separator, xs) => xs.join(separator))
 export const split = curry((separator, str) => str.split(separator))
 
 // chain :: (a -> [b]) -> [a] -> [b]
-export const chain = (fn, xs) => [].concat.apply([], xs.map(fn))
+export const chain = curry((fn, xs) => [].concat.apply([], xs.map(fn)))
 
 // of :: a -> [b]
 export const of = Array.of.bind(Array)
