@@ -9,7 +9,7 @@
 		var args = [], len = arguments.length - 1;
 		while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
 
-		return args.length === fn.length ? fn.apply(void 0, args) : curry.bind.apply(curry, [ null, fn ].concat( args ));
+		return args.length >= fn.length ? fn.apply(void 0, args) : curry.bind.apply(curry, [ null, fn ].concat( args ));
 	}
 
 	// decode :: String -> String
@@ -58,8 +58,11 @@
 	// split :: String | RegExp → String → [String]
 	var split = curry(function (separator, str) { return str.split(separator); })
 
-	// chain :: (a -> [b]) -> [a] -> [b]
-	var chain = curry(function (fn, xs) { return [].concat.apply([], xs.map(fn)); })
+	// map :: (a -> [b]) -> [a] -> [b]
+	var map = curry(function (fn, xs) { return xs.map(fn); })
+
+	// chain :: (a -> b) -> [a] -> [b]
+	var chain = curry(function (fn, xs) { return [].concat.apply([], map(fn, xs)); })
 
 	// of :: a -> [b]
 	var of = Array.of.bind(Array)
@@ -85,6 +88,7 @@
 	exports.union = union;
 	exports.join = join;
 	exports.split = split;
+	exports.map = map;
 	exports.chain = chain;
 	exports.of = of;
 	exports.filter = filter;
