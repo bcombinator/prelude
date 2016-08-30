@@ -47,7 +47,11 @@
 	var uniq = curry(function (xs) { return xs.reduce(function (list, x) { return !contains(x, list) ? list.concat(x) : list; }, []); })
 
 	// concat :: [a] -> [a] -> [a]
-	var concat = curry(function (xs, list) { return xs.concat(list); })
+	var concat = curry(function (xs, list) {
+		if ( list === void 0 ) list = [];
+
+		return xs.concat(list);
+	})
 
 	// union :: Eq a => [a] -> [a] -> [a]
 	var union = compose(uniq, concat)
