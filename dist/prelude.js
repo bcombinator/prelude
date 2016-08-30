@@ -44,7 +44,7 @@
 	var contains = curry(function (x, xs) { return xs.indexOf(x) >= 0; })
 
 	// uniq :: Eq a => [a] -> [a]
-	var uniq = function (xs) { return xs.reduce(function (list, x) { return !contains(x, list) ? list.concat(x) : list; }, []); }
+	var uniq = curry(function (xs) { return xs.reduce(function (list, x) { return !contains(x, list) ? list.concat(x) : list; }, []); })
 
 	// concat :: [a] -> [a] -> [a]
 	var concat = curry(function (xs, list) { return xs.concat(list); })
