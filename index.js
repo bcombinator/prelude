@@ -26,7 +26,7 @@ export const contains = curry((x, xs) => xs.indexOf(x) >= 0)
 export const uniq = curry(xs => xs.reduce((list, x) => !contains(x, list) ? list.concat(x) : list, []))
 
 // concat :: [a] -> [a] -> [a]
-export const concat = curry((xs, list = []) => xs.concat(list))
+export const concat = (xs, list) => xs.concat(list)
 
 // union :: Eq a => [a] -> [a] -> [a]
 export const union = compose(uniq, concat)
