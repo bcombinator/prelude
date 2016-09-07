@@ -1,7 +1,7 @@
 {
   "name": "@bcombinator/prelude",
   "description": "A standard module imported by default into all Bcombinator modules",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "David Chase <davidchase03@gmail.com> (github.com/davidchase)",
   "bugs": {
     "url": "https://github.com/bcombinator/prelude/issues"
